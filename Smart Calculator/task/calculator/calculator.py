@@ -1,36 +1,48 @@
-d, temp, temp_multiply, temp_add = {}, [], [], []
+d, temp = {}, []
 s, sign, temp1, temp2, temp_s = int, 1, int, int, ''
 
 
 def computer(t):
+    temp_add = []
     act = ''
     for j1 in t:
         if act is '':
             temp_add.append(j1)
         elif act == '*':
-            t.pop(-1)
-            temp_add.append(t.pop(-1) * j1)
+            temp_add.pop()
+            k = temp_add.pop()
+            if isinstance(k, int) and isinstance(j1, int):
+                temp_add.append(k * j1)
+            else:
+                return 'Invalid expression'
+            act = ''
         elif act == '/':
             if j1 != 0:
-                t.pop(-1)
-                temp_add.append(t.pop(-1) / j1)
+                temp_add.pop()
+                k = temp_add.pop()
+                if isinstance(k, int) and isinstance(j1, int):
+                    temp_add.append(k // j1)
+                else:
+                    return 'Invalid expression'
+                act = ''
             else:
-                print('Divided by zero')
-                return None
+                return 'Divided by zero'
         if j1 == '*':
             act = '*'
         elif j1 == '/':
             act = '/'
     s_out = 0
     sign_out = 1
-    print(temp_add)
     for nu in temp_add:
         if nu == '-' or nu == '+':
             if nu == '-':
                 sign_out *= -1
         else:
-            s_out += nu * sign_out
-            sign_out = 1
+            if isinstance(nu, int):
+                s_out += nu * sign_out
+                sign_out = 1
+            else:
+                return 'Invalid expression'
     return s_out
 
 
@@ -42,20 +54,20 @@ while True:
     elif num == '/exit':
         break
     elif num == '/help':
-        s = '''The program calculates 
-sum and difference of numbers
-3 ++2---1
-multiply and divided
-3 *2/ 3 + 1
+        s = '''The program calculates
+addition and subtraction
+3 ++2---1  # equals 4
+multiplication, division
+3 *2/ 3 + 1  # equals 3
 unary minus
-5+ -2 * 3
-operation with ( )
-5+(4-2)*4 + -1
-operations with variable
+5+ -2 * 4  # equals -3
+operation with parentheses ( )
+5+(4-2)*4 + -1  # equals 12
+operations with variables
 n=5
 kl=1
-n
-(n * kl)*2 +1
+n  # equals 5
+(n * kl)* 2 +1  # equals 11
 '''
     elif num[0:1] == '/':
         s = 'Unknown command'
@@ -119,18 +131,14 @@ n
                     sign *= -1
                 temp.append('+') if sign == 1 else temp.append('-')
                 sign = 1
-        num = temp
-        temp_multiply = temp
-        # temp = []
 
-    while '(' in num:
-        pass
-    s = computer(temp_multiply)
+        # while '(' in num:
+        #     pass
+        s = computer(temp)
     if s is not None:
         print(s)
 #     ---------------------------------------------------
-    print(temp)
-    temp = []
+#     print(temp)
+#     temp = []
 #         ---------------------------------------------------
 print('bye')
-
