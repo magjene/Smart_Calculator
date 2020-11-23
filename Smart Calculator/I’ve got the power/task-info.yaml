@@ -1,10 +1,6 @@
 type: edu
 custom_name: stage7
 files:
-- name: calculator/calculator.py
-  visible: true
-  text: '# write your code here'
-  learner_created: false
 - name: tests.py
   visible: false
   text: |
@@ -213,6 +209,10 @@ files:
 - name: calculator/qwer.py
   visible: true
   learner_created: true
+- name: calculator/calculator.py
+  visible: true
+  text: '# write your code here'
+  learner_created: false
 feedback_link: https://hyperskill.org/projects/74/stages/415/implement#comment
 status: Unchecked
 record: 7
