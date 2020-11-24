@@ -214,11 +214,9 @@ files:
   text: '# write your code here'
   learner_created: false
 feedback_link: https://hyperskill.org/projects/74/stages/415/implement#comment
-status: Failed
+status: Solved
 feedback:
-  message: "Wrong answer in test #2\n\nThe program should be case sensitive.\n\nPlease\
-    \ find below the output of your program during this failed test.\nNote that the\
-    \ '>' character indicates the beginning of the input line.\n\n---\n\n> variable\
-    \ = 777 \n>  Variable\n0"
-  time: Tue, 24 Nov 2020 15:31:40 UTC
+  message: Congratulations! Continue on <a href="https://hyperskill.org/projects/74/stages/415/implement">JetBrains
+    Academy</a>
+  time: Tue, 24 Nov 2020 15:57:30 UTC
 record: 7

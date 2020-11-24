@@ -49,7 +49,7 @@ def computer(t):
 while True:
     temp = []
     s, sign = 0, 1
-    num = input()
+    num = input().strip()
     if num == '':  # Комманды
         continue
     elif num == '/exit':
