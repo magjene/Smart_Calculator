@@ -1,4 +1,4 @@
-d, temp = {}, []
+d = {}
 s, sign, temp1, temp2, temp_s = int, 1, int, int, ''
 
 
@@ -47,6 +47,7 @@ def computer(t):
 
 
 while True:
+    temp = []
     s, sign = 0, 1
     num = input()
     if num == '':  # Комманды
@@ -131,10 +132,26 @@ n  # equals 5
                     sign *= -1
                 temp.append('+') if sign == 1 else temp.append('-')
                 sign = 1
-
-        # while '(' in num:
-        #     pass
-        s = computer(temp)
+        while True:
+            num = []
+            ind_l, ind_r = None, None
+            for i, val in enumerate(temp):
+                if val == '(' and ind_r is None:
+                    ind_l = i
+                elif val == ')' and ind_r is None:
+                    ind_r = i
+            if ind_l is None and ind_r is None:
+                s = computer(temp)
+                break
+            elif isinstance(ind_l, int) and isinstance(ind_r, int) and ind_r > ind_l:
+                del temp[ind_l]
+                for _ in range(ind_r - ind_l - 1):
+                    num.append(temp.pop(ind_l))
+                del temp[ind_l]
+                temp.insert(ind_l, computer(num))
+            else:
+                s = 'Invalid identifier'
+                break
     if s is not None:
         print(s)
 #     ---------------------------------------------------
